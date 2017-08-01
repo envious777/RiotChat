@@ -1,0 +1,363 @@
+body, html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+body{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    font-family: 'Karla', sans-serif;
+    overflow: auto;
+}
+input, button{
+    font-family: 'Karla', sans-serif;
+    width: 100%;
+    padding: 1rem;
+    /* text-align: center; */
+    margin-bottom: 1rem;
+    border: 0;
+    font-size: 1rem;
+}  
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+#view{
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+#view[data-is="chat"]{
+    animation: fadeInUp 0.5s cubic-bezier(1, 0, 0, 1);
+}
+
+.nodisplay{
+    display: none !important;
+} 
+
+/* #auth{
+    transform: scale(0.5);
+    opacity: 0;
+} */
+
+#auth, #name{
+    width: 50%;
+    height: 75%;
+    min-width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: navajowhite;
+    border-radius: 5px;
+    /* box-shadow: 0 2px 4px rgba(0,0,0,0.15); */
+}
+
+#name{
+    animation: fadeInUp 0.5s cubic-bezier(1, 0, 0, 1);
+}
+
+.title{
+    width: 80%;
+    margin-bottom: 4rem;
+    color: white;
+}
+.title h1{
+    font-size: 3rem;
+    letter-spacing: 10px;
+    margin: 0;
+}
+.title h3{
+    margin: 0;
+    font-size: 1.25rem;
+    letter-spacing: 5px;
+}
+
+#auth input, #name input{
+    width: 75%;
+    background: floralwhite;
+    transition: 0.25s ease;
+}
+#auth input::placeholder, #name input::placeholder{
+    color: wheat;
+}
+#auth input:hover, #name input:hover{
+    background: white;
+}
+
+#btn_grp{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#btn_grp button, #name button {
+    background: none;
+    font-weight: 700;
+    transition: 0.25s ease;
+    cursor: pointer;
+    letter-spacing: 5px;
+    color: white;
+    width: 35%;
+    border: 3px solid antiquewhite;
+}
+#btn_grp button:hover, #name button:hover {
+    border: 3px solid white;
+}
+#btn_grp button:focus, #name button:focus {
+    background: white;
+    color: wheat;
+}
+
+#info{
+    position: relative;
+    display: inline-flex;
+    width: 50%;
+    min-width: 500px;
+    /* top: 0; */
+    justify-content: space-between;
+    background: white;
+    border-bottom: 10px solid orange;
+    z-index: 100;
+}
+#info h1{
+    letter-spacing: 10px;
+    font-size: 3rem;
+    margin: 0;
+    color: navajowhite;
+}
+#info div{
+    padding-top: 0.75rem;
+}
+#info div p{
+    font-size: 0.75rem;
+    color: #ccc;
+    text-align: end;
+    margin: 0;
+}
+#info div span{
+    color: lightgreen;
+    font-size: 1.25rem;
+}
+
+showtyping{
+    position: fixed;
+    left: 0;
+    width: 100%;
+    transform: translateY(-50px);
+    transition: 0.1s cubic-bezier(1.000, 0.000, 0.000, 1.000);
+}
+showtyping p{
+    background: rgba(255,255,255,0.75);
+    margin: 0;
+    padding: 1rem;
+    font-size: 0.75rem;
+    text-align: center;
+    color: lightgreen;
+}
+.showtyping{
+    display: block;
+    transform: translate(0px);
+}
+
+#chat{
+    background: navajowhite;
+    padding: 0rem;
+    width: 50%;
+    min-width: 500px;
+    height: 75%;
+    min-height: 500px;
+    overflow: scroll;
+    z-index: 99;
+}
+#chat ul{
+    list-style-type: none;
+    padding: 0.25rem;
+    margin: 0;
+}
+#chat li{
+    padding: 0.35rem;
+    margin-bottom: 0.25rem;
+    background: floralwhite;
+    min-width: 15%;
+    max-width: 50%;
+    word-break: break-all;
+    text-align: justify;
+    display: inline-block;
+    margin-right: 15rem;
+}
+#chat li:nth-last-child(1){
+    margin-bottom: 0;
+}
+.who{
+    color: orangered;
+    font-size: 0.6rem;
+}
+.time{
+    float: right;
+    color: #ccc;
+    font-size: 0.6rem;
+}
+
+#msgdiv{
+    position: relative;
+    display: inline-flex;
+    width: 50%;
+    min-width: 500px;
+    z-index: 100;
+    /* bottom: 0; */
+}
+#msgdiv input{
+    padding: 0.75rem;
+    border: 0;
+    background: antiquewhite;
+    margin-bottom: 0;
+    font-size: 1rem;
+    border-bottom-left-radius: 5px;
+}
+#msgdiv button{
+    width: 15%;
+    border: 0;
+    color: #fafafa;
+    margin-bottom: 0;
+    background: lightgreen;
+    font-size: 1rem;
+    border-bottom-right-radius: 5px;
+    transition: 0.15s ease;
+}
+#msgdiv button:hover {
+    box-shadow: inset 2px 2px 10px rgba(0,0,0,0.25);
+}
+
+#error{
+    position: absolute;
+    top:0;
+    transform: translateY(-100px); 
+    width: 100%;
+    padding: 0.75rem;
+    text-align: center;
+    background: orangered;
+    color: wheat;
+    transition: 0.25s cubic-bezier(1, 0, 0, 1);
+}
+#error p{
+    margin: 0;
+}
+.showerror{
+    transform: translateY(0) !important;
+}
+
+.left{
+    float: left;
+}
+.right{
+    float: right;
+    margin-left: 15rem;
+    margin-right: 0rem !important;
+}
+.right .who {
+    color: lightgreen;
+}
+
+.scaleupfadein{
+    animation: scaleUpFadeIn 0.75s cubic-bezier(1, 0, 0, 1);
+}
+.fadeoutleft{
+    animation: fadeOutLeft 0.5s cubic-bezier(1, 0, 0, 1);
+}
+
+@keyframes scaleUpFadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1); 
+  }
+}
+@keyframes fadeOutLeft {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+     transform: translate3d(-100%, 0, 0); 
+  }
+}
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 25%, 0); 
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0); 
+  }
+}
+
+@media screen and (max-width: 425px) {
+    #auth, #name{
+        width: 100%;
+        height: 100%;
+        min-width: 0;
+        border-radius: 0;
+    }
+    #btn_grp button, #name button{
+        width: 40%;
+    }
+    #info, #chat, #msgdiv{
+        width: 100%;
+        min-width: 0;
+    }
+    #info div{
+        padding-right: 0.25rem;
+    }
+    #msgdiv input, #msgdiv button{ 
+        border-radius: 0;
+    }
+    #msgdiv button{
+        width: 25%;
+    }
+    #chatwindow li{
+        margin-right: 10rem;
+    }
+    .right{
+        margin-left: 10rem;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    #btn_grp button, #name button{
+        width: 50%;
+    }
+    #chatwindow li{
+        margin-right: 5rem;
+    }
+    .right{
+        margin-left: 5rem;
+    }
+    #info div{
+        padding-top: 1rem;
+    }
+    #info h1{
+        font-size: 2.5rem;
+    }
+    #info div p{
+        font-size: 0.5rem;
+    }
+    #info div span{
+        font-size: 0.75rem;
+    }
+}
+
