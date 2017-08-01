@@ -32,7 +32,7 @@
         istyping = false
         itype = false
         user = this.opts.chatname
-
+        messages=[]
         type(){
             return istyping && !itype
         }
